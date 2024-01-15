@@ -462,6 +462,11 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 30px;
 }
 
+#contact-info2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 #contact-form {
     max-width: 500px;
     margin: 0 auto;
@@ -643,3 +648,21 @@ button:hover {
 .swiper-pagination-bullet-active {
     background-color: #007bff; /* Different color for the active bullet */
 }
+
+/* Style for the social media icons */
+.social-icons {
+    font-size: 24px; /* Adjust the icon size */
+    margin-top: 10px; /* Add spacing between icons and text */
+}
+
+/* Style for the "Connect with Us" text */
+#social-media h2 {
+    font-size: 18px; /* Adjust the text size */
+    margin-bottom: 10px; /* Add spacing below the text */
+}
+
+/* Styling for Font Awesome icons in the footer */
+footer .fab {
+    color: white; /* Set the icon color to white */
+}
+
