@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, HTML!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+            <a href="care.html">Care Guides</a>
+        </li>
+        <li>
+            <a href="products.html">Shop</a>
+            <ul class="submenu">
+                <li><a href="products/supplies.html">Aquarium Supplies</a></li>
+                <li><a href="products/accessories.html">Accessories</a></li>
+                <li><a href="products/freshwater.html">Freshwater Fish</a></li>
+                <li><a href="products/saltwater.html">Saltwater Fish</a></li>
+            </ul>
+        </li>
+            <li><a href="subscribe.html">Subscribe</a></li>
+            <li class="cart-icon-container">
+                <a href="cart.html" class="cart-icon">
+                    🛒 <span id="cart-item-count">0</span> Items
+                </a>
+                <div class="mini-cart-dropdown" style="display: none;">
+                    <!-- Mini-cart contents will go here -->
+                </div>
+                <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="intro">
+        <div class="container">
+            <img src="Images/doggo.jpg" alt="/">
+            <h2>Angelo's Tropical Fish World</h2>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="location-hours">
+        <p>Location: 2005 North Pointe Drive, Suite 9, Durham NC, 27705</p>
+        <p>Hours: Mon: 10 AM - 6 PM ||
+            Tues: Closed || 
+            Wed: 10 AM - 6 PM || 
+            Thurs: 10 AM - 6 PM ||
+            Fri: 10 AM - 6 PM ||
+            Sat: 10 AM - 6 PM ||
+            Sun: 1 PM - 5 PM
+
+        </p>
+    </div>
+    <p>&copy; 2023 Angelo's Tropical Fish World</p>
+</footer>
+<script src="script.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>

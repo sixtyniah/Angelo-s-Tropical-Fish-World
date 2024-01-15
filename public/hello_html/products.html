@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
+        <li>
+            <a href="products.html">Shop</a>
+        </li>
+            <li><a href="subscribe.html">Subscribe</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+
+        </ul>
+    </nav>
+</header>
+<main>
+    <h1>Shop All Products</h1>
+ 
+    <div class="search-container">
+        <div id="search-controls">
+            <label for="product-search">Search Products:</label>
+            <input type="text" id="product-search" placeholder="Enter product name">
+        </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div id="filter-controls">
+        <label for="category-filter">Filter by Category:</label>
+        <select id="category-filter">
+            <option value="all">All Categories</option>
+            <option value="Y2LOLS26RUVQ24DHMS4ZS6O4">Aquariums/fish bowls</option>
+            <option value="IXACBCY54FCIQ7NIHZZWI2SG">Chemicals</option>
+            <option value="Q5AON32I3IA3QAV2QNADUFRW">Decor</option>
+            <option value="OVOKXOTFJCZOEONOSJ2DNJUW">Driftwood</option>
+            <option value="MC5QBMZNX7X73CQYNSCOISYV">Filters/Pumps</option>
+            <option value="ZNDZHLPI4S5KKUK3PIDR7VPO">Fish Food</option>
+            <option value="MUZBWWILJRYP5KB5ZWPF24GX">Frag</option>
+            <option value="5MCNED2W4H63PVKS7KXPP4JO">Freshwater Fish</option>
+            <option value="23VWO76KPUEILUEUUZJKNXJS">Gravel/Sand</option>
+            <option value="MYREVWSWTKZGQKPGJH7OBX2G">Heaters/Thermometers</option>
+            <option value="VSAMYRIZCQTI4UFURSRMR2OR">Lighting</option>
+            <option value="TRDP656NVQLDGZFMUKONZ7VX">Live Coral</option>
+            <option value="OUAKSAWCQMV65SV7VXSE3KVG">Nets</option>
+            <option value="ZDAOLXD4SANAMD2FHVK6LNMP">Plants</option>
+            <option value="JPQPG43IBAZAVGBVZZUARGQM">Saltwater Fish</option>
+            <option value="SUNBCJGV7K6LSXPKBZAL7GXF"> Tubing and Valves</option>
+            <option value="DNREDCNPIKU26AZQENA23SQ6"> Invertebrate </option>
+            <option value="M7T5QB4HWAR5CLKY7DJSTRFK"> Featured Items </option>
+
+
+        </select>
+    </div>
+    
+    <!-- Product Grid -->
+    <div id="all-product-grid">
+        <!-- Product items from different categories will be displayed here -->
+    </div>
+</main>
+<footer>
+    <div class="location-hours">
+        <p>Location: 2005 North Pointe Drive, Suite 9, Durham NC, 27705</p>
+        <p>Hours: Mon: 10 AM - 6 PM ||
+            Tues: Closed || 
+            Wed: 10 AM - 6 PM || 
+            Thurs: 10 AM - 6 PM ||
+            Fri: 10 AM - 6 PM ||
+            Sat: 10 AM - 6 PM ||
+            Sun: 1 PM - 5 PM
+
+        </p>
+    </div>
+    <p>&copy; 2023 Angelo's Tropical Fish World</p>
+</footer>
+<script src="script.js"></script> <!-- Link to the JavaScript file -->
+<script src="products.js" defer></script>
+<script src="cart.js" defer></script>
+<script src="squarePayments.js"></script>
+</body>
+</html>

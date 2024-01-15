@@ -1,0 +1,645 @@
+/* Base styling for navigation */
+main {
+    width: 85%;
+    margin: 0 auto;
+    padding: 25px;
+    /* Other styles... */
+}
+
+/* Add this new style for the search bar container */
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    /* Additional styles as needed */
+}
+
+/* Update search-controls within the new container */
+
+/* Responsive considerations */
+@media (max-width: 768px) {
+    .search-container {
+        justify-content: center;
+        margin-right: 0;
+    }
+}
+
+nav {
+    background-color: #333; /* Darker background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    padding: 10px 15px;
+    color: #fff; /* Text color */
+}
+
+/* Additional responsive considerations for smaller screens */
+@media (max-width: 768px) {
+    main {
+        align-items: center;
+    }
+
+    #search-controls {
+        align-self: center;
+        margin-right: 0;
+    }
+}
+
+
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: start;
+    gap: 15px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    display: block;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #444; /* Darker on hover */
+}
+
+/* Styling for cart icon */
+.cart-icon-container {
+    position: relative;
+}
+
+.cart-icon {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Styling for mini-cart dropdown */
+.mini-cart-dropdown {
+    position: absolute;
+    right: 0;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    width: 300px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    display: none;
+}
+
+.mini-cart-dropdown .cart-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Dropdown submenu functionality */
+ul.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333; /* Darker submenu background */
+    border: 1px solid #444; /* Darker submenu border */
+    border-radius: 4px;
+    min-width: 150px;
+    z-index: 100;
+}
+
+ul.submenu li {
+    display: block;
+    width: 100%;
+}
+
+nav ul li:hover > .submenu {
+    display: block;
+}
+
+/* Footer styling */
+footer {
+    background: #333; /* Darker background */
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+}
+
+/* Homepage styling */
+
+.cta-button {
+    background: #007bff; /* Blue color */
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 25px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background: #0056b3; /* Darker blue on hover */
+}
+
+#header {
+    /* Set styles for your header here */
+    width: 100%;
+    /* Make sure there is no bottom margin or padding that could cause space */
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Makes sure padding and borders are included in the total width and height */
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+#about-us {
+    padding: 25px;
+    text-align: center;
+}
+
+#about-owner {
+    padding: 25px;
+    text-align: center;
+}
+
+
+
+/* Styling gallery section where all images are */
+.gallery {
+    width: 90%;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    justify-content:center;
+    align-items: center; 
+  }
+ 
+  /* Styling Particular Image */
+  .gallery-img {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  /* onHover image will expand little bit */
+  .gallery-img:hover {
+    transform: scale(1.1);
+    cursor: zoom-in;
+  }
+  /* This section will be seen when we click on image */
+  .image-popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+ 
+  /* close button when we want to close the bigger image */
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    font-size:60px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .close-button:hover{
+    color: red;
+  }
+ 
+  /* when we click on the image it will expand in bigger size and will displayed 
+at middle of screen */
+#popupImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* This will ensure the image aspect ratio is maintained */
+}
+
+#prevButton, #nextButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#prevButton {
+    left: 10px;
+}
+
+#nextButton {
+    right: 10px;
+}
+
+ 
+  /* Making images more responsive for smaller size device */
+  @media (max-width:670px) {
+    .gallery{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-gap: 10px;
+    }
+    .gallery-img{
+        width:150px;
+        height: 150px;
+    }
+ 
+  }
+
+#introduction {
+    background-image: url('headerimage.jpeg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100vw; 
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    }
+    
+    #introduction h2 {
+    font-size: 5.2em;
+    color: #f1f3f4; 
+    padding: 0;
+    margin: 0;
+    /* Remove margin-bottom if you don't need space below h2 */
+    }
+
+
+    .flex-container {
+        display: flex;
+        align-items: flex-start; /* Align items to the top */
+        margin-bottom: 20px; /* Space between sections */
+    }
+    
+    #about-us {
+        flex-direction: row-reverse;
+        width: 100%; /* Reverses the order for the About Us section */
+    }
+    
+    .about-image {
+        flex: 0 0 auto; /* Do not grow or shrink */
+        margin-left: 20px;
+        margin-right: 40px; /* Space between the image and the text */
+        width: 400px; /* Adjusted width for images */
+        height: auto; /* Maintain aspect ratio */
+    }
+    
+    .about-text {
+        flex: 1; /* Allows the text container to take the remaining space */
+    }
+    
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+        .flex-container {
+            flex-direction: column;
+            align-items: center;
+        }
+        .about-image {
+            margin-left: 0;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            width: 90%; /* Adjust width on small screens */
+        }
+        .about-text {
+            width: 100%;
+        }
+    }
+
+
+    #introduction p {
+    font-size: 1.3em;
+    color: #faf7f7;
+    padding: 0;
+    margin: 0;
+    /* Add margin-top if you need space above the paragraph */
+    }
+
+/* Cart page styling */
+main {
+    width: 85%;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+#cart-items {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 25px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-top: 1px solid #ccc;
+}
+
+.cart-item img {
+    width: 100px;
+    height: auto;
+}
+
+#cart-summary {
+    text-align: right;
+}
+
+#cart-summary p {
+    margin: 15px 0;
+}
+
+#checkout-button {
+    background-color: #28a745; /* Green color */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#checkout-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.product-item {
+    border: none; /* Remove border */
+    padding: 15px;
+    text-align: center;
+    background-color: #fff; /* Change to a lighter background */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.product-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for a "lifting" effect */
+}
+
+.product-item img {
+    width: auto; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+    object-fit: cover; /* Ensures images are nicely fitted */
+    border-radius: 4px; /* Rounded corners for images */
+    margin-bottom: 15px; /* Space between image and text */
+}
+
+.product-item h3 {
+    font-size: 1.2em; /* Adjust size as needed */
+    color: #333; /* Darker text color for contrast */
+    margin-bottom: 10px; /* Space between title and description */
+}
+
+.product-item p {
+    font-size: 1em; /* Adjust size as needed */
+    color: #666; /* Lighter text color for descriptions */
+    margin-bottom: 15px; /* Space between description and price */
+}
+
+.price {
+    color: #03a9f4; /* Bright theme color for price */
+    font-weight: bold;
+    margin-bottom: 15px; /* Space between price and button */
+}
+
+.add-to-cart-button {
+    background-color: #007bff; /* Consistent theme color for buttons */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners for buttons */
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* If you have titles for your product sections, you might want to style them as well */
+.section-title {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Styling for the featured products section */
+#featured-products {
+    border: none; /* Remove border */
+    padding: 15px;
+    text-align: center;
+    background-color: #fff; /* Change to a lighter background */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+#contact-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+button {
+    background-color: #007bff; /* Blue color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#subscribe-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#hero{
+    text-align: center;
+    padding: 50px 20px;
+}
+
+
+#subscribe-form {
+    margin-top: 20px;
+}
+
+#subscribe-form input[type="email"] {
+    width: 70%;
+    padding: 10px;
+    margin-right: -4px; /* Adjusts for the button's border */
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+}
+
+#subscribe-form button {
+    background: #007bff; /* Blue color */
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 25px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#subscribe-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.slider {
+    overflow: hidden;
+    width: 100px; /* Adjust this to the width of a single item */
+    margin: auto; /* Center the slider */
+}
+
+
+.slider-track {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.3s ease; /* Smooth transition for movement */
+}
+
+.testimonial {
+    width: 200px; /* Ensure this matches the width of the slider */
+    /* Additional styles for testimonials */
+}
+
+.product-item {
+    border: none; /* Remove borders */
+    box-shadow: none; /* Remove shadows if any */
+    background-color: transparent;
+/* Remove background color */
+    /* other styles... */
+}
+/* Swiper Container Styling */
+.swiper {
+    width: 100%; /* Ensures that the slider takes full width */
+    height: auto; /* Adjust height as needed */
+}
+
+/* Swiper Slide Styling */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Ensure the image sizes are controlled within the slides */
+.swiper-slide img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Center the image */
+}
+
+/* Testimonials Section Styling */
+#customer-testimonials {
+    padding: 20px;
+    background-color: #f2f2f2; /* Light background for the section */
+    text-align: center;
+}
+
+/* Individual Testimonial Item */
+.testimonial-item {
+    padding: 15px;
+    background-color: #fff; /* White background for each testimonial */
+    border-radius: 10px; /* Rounded corners for the testimonials */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 10px;
+    text-align: center; /* Center align the text */
+}
+
+/* Testimonial Image */
+.testimonial-item .testimonial-img {
+    width: 80px; /* Adjust size as needed */
+    height: 80px; /* Adjust size as needed */
+    border-radius: 50%; /* Circular images */
+    margin: 0 auto; /* Center the image */
+    border: 3px solid #03a9f4; /* Border color for the images */
+}
+
+/* Testimonial Text */
+.testimonial-item h3, .testimonial-item h4 {
+    color: #333; /* Darker text color */
+    margin: 10px 0;
+}
+
+.testimonial-item p {
+    color: #666; /* Lighter text color for testimonial text */
+    font-style: italic; /* Italicize the testimonial text */
+}
+
+/* Quote Icons */
+.quote-icon-left, .quote-icon-right {
+    color: #03a9f4; /* Color for quote icons */
+    font-size: 24px; /* Size of the quote icons */
+}
+
+/* Swiper Pagination (if needed) */
+.swiper-pagination-bullet {
+    background-color: #03a9f4; /* Matching theme color for pagination bullets */
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #007bff; /* Different color for the active bullet */
+}

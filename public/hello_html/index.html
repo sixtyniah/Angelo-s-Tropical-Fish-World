@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angelo's Tropical Fish World</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a href="products.html">Shop</a>
+                </li>
+                <li><a href="subscribe.html">Subscribe</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="introduction">
+        <h2>Angelo's Tropical Fish World </h2>
+        <p>Discover the beauty and diversity of aquatic life. We offer a wide range of tropical fish, aquariums, and accessories to bring your underwater world to life.</p>
+    </section>
+
+    <section id="featured-products">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="products-slider swiper">
+                <div class="swiper-wrapper" id="swiper-wrapper-featured">
+                    <!-- Dynamic product items will be appended here -->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hero">
+        <h1>Discover Our Collection</h1>
+        <a href="products.html" class="cta-button">Start Your Aquarium Journey</a>
+    </section>
+
+    <section id="subscribe-section">
+        <h2>Join Our Aquatic Community</h2>
+        <button onclick="window.location.href='subscribe.html'">Subscribe</button>
+    </section>
+
+    <section id="about-us">
+        <h2>About Our Store</h2>
+        <p>Learn more about us!</p>
+        <button onclick="window.location.href='about.html'">Learn more</button>
+    </section>
+    
+    <section id="customer-testimonials">
+        <div class="container">
+            <h2>Testimonials</h2>
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <h3>Jane Doe</h3>
+                            <h4>Aquarium Enthusiast</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                Angelo's Tropical Fish World has transformed my home aquarium experience. Their diverse selection and knowledgeable staff are unbeatable!
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <h3>John Smith</h3>
+                            <h4>Fish Hobbyist</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                I'm always impressed by the quality of fish and aquarium supplies at Angelo's. Their expert advice has helped me create a stunning underwater world.
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <h3>Alex Lee</h3>
+                            <h4>Marine Biologist</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                As a marine biologist, I appreciate the commitment of Angelo's to sustainability and education. Their passion for aquatic life really shows in their service.
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    
+    <section id="about-us">
+        <h2>Get In Touch With Us!</h2>
+        <button onclick="window.location.href='contact.html'">Contact</button>
+    </section>
+
+    <footer>
+        <div class="location-hours">
+            <p>Location: 2005 North Pointe Drive, Suite 9, Durham NC, 27705</p>
+            <p>Hours: Mon: 10 AM - 6 PM ||
+                Tues: Closed || 
+                Wed: 10 AM - 6 PM || 
+                Thurs: 10 AM - 6 PM ||
+                Fri: 10 AM - 6 PM ||
+                Sat: 10 AM - 6 PM ||
+                Sun: 1 PM - 5 PM
+
+            </p>
+        </div>
+        <p>&copy; 2023 Angelo's Tropical Fish World</p>
+    </footer>
+
+
+    <script src="cart.js"></script>
+    <script src="subscribe.js"></script>
+    <script src="products.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- AOS Animation JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>
