@@ -96,7 +96,6 @@ function displayFilteredProducts(products, searchQuery) {
             productDiv.innerHTML = `
                 <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:300px; height:300px;">
                 <h3>${productName}</h3>
-                <p>${productDescription}</p>
                 <p>$${productPrice.toFixed(2)}</p>
             `;
 
