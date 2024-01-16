@@ -768,7 +768,7 @@ button:hover {
     background-color: #0056b3;
 }
 
-#subscribe-section, #hero {
+#subscribe-section, #hero, #aboutus1, #contactinfo2 {
     text-align: center;
     padding: 50px 20px;
 }
@@ -801,7 +801,7 @@ button:hover {
         width: 100%; /* Full width on small devices */
     }
 
-    #hero, #subscribe-section {
+    #hero, #subscribe-section, #about-us1, #contact-info2 {
         padding: 20px 10px;
     }
 
@@ -838,7 +838,7 @@ button:hover {
         margin-bottom: 20px;
     }
 
-    #subscribe-section, #hero {
+    #subscribe-section, #hero, #contact-info2, #about-us1 {
         padding: 30px 15px;
     }
 }
@@ -857,7 +857,7 @@ button:hover {
         margin-bottom: 25px;
     }
 
-    #subscribe-section, #hero {
+    #subscribe-section, #hero, #contact-info2, #about-us1 {
         padding: 40px 25px;
     }
 }
@@ -876,7 +876,7 @@ button:hover {
         margin-bottom: 30px;
     }
 
-    #subscribe-section, #hero {
+    #subscribe-section, #hero, #about-us1, #contact-info2 {
         padding: 50px 20px;
     }
 }
