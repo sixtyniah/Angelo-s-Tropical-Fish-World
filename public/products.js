@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function fetchProducts(categoryName, searchQuery = '') {
     console.log("Fetching products for category:", categoryName, "with search query:", searchQuery);
-    const backendUrl = 'http://localhost:3000';
+    const backendUrl = '/api/products';
     fetch(`${backendUrl}/api/products?category=${encodeURIComponent(categoryName)}&search=${encodeURIComponent(searchQuery)}`)
         .then(response => {
             if (!response.ok) {
@@ -147,7 +147,7 @@ function addToCart(itemName, itemPrice, itemImage) {
 
 // Function to fetch and display featured products
 function fetchFeaturedProducts() {
-    const backendUrl = 'http://localhost:3000';
+    const backendUrl = '/api/products';
     const featuredCategoryID = 'M7T5QB4HWAR5CLKY7DJSTRFK'; // Replace with the actual category ID for "Featured Items"
     
     fetch(`${backendUrl}/api/products?category=${encodeURIComponent(featuredCategoryID)}`)
