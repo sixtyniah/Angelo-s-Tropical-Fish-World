@@ -956,25 +956,28 @@ border-radius: 4px;
     width: 100%; /* Adjust for smaller screens */
 }
 
-}/* For mobile phones /
+}/* For mobile phones */
 @media (max-width: 480px) {
-.slider {
-width: 100%; / Full width on small screens */
-}
-.testimonial, .swiper-slide {
-    width: 100%; /* Full width on small screens */
-}
+    .slider {
+        width: 100%; /* Full width on small screens */
+    }
+    .testimonial {
+        width: 100%; /* Full width on small screens */
+    }
+    .swiper-slide {
+        width: 100%; /* Full width on small screens */
+    }
 
-.testimonial-item {
-    padding: 10px; /* Slightly smaller padding */
-}
+    .testimonial-item {
+        padding: 10px; /* Slightly smaller padding */
+    }
 
-.testimonial-item .testimonial-img {
-    width: 60px; /* Smaller image size */
-    height: 60px; /* Smaller image size */
+    .testimonial-item .testimonial-img {
+        width: 60px; /* Smaller image size */
+        height: 60px; /* Smaller image size */
+    }
 }
-
-}/* Base styles - these apply to all devices */
+/* Base styles - these apply to all devices */
 
 /* Quote Icons */
 .quote-icon-left, .quote-icon-right {
@@ -1045,7 +1048,3 @@ footer .fab {
 
     /* Additional mobile-specific styles here */
 }
-
-
-
-
