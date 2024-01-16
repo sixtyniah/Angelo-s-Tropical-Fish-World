@@ -19,95 +19,13 @@ main {
     /* Add specific styles for search controls here */
 }
 
-
-/* CSS for desktop navigation (id="desknav") */
-#desknav nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: start;
-    gap: 15px;
-}
-
-#desknav nav ul li {
-    position: relative;
-}
-
-#desknav nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 15px;
-    display: block;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-#desknav nav a:hover {
-    background-color: #444;
-}
-
-/* CSS for mobile navigation (id="mobile") */
-#mobile .menu-icon {
-    display: none; /* Hide by default on larger screens */
-    cursor: pointer;
-}
-
-#mobile .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 3px 0;
-    transition: 0.4s;
-}
-
-#mobile nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#mobile nav ul li {
-    margin-bottom: 10px;
-}
-
-#mobile nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 15px;
-    display: block;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-#mobile nav a:hover {
-    background-color: #444;
-}
-
-/* Media query for mobile devices (max-width: 480px) */
-@media screen and (max-width: 480px) {
-    #mobile .menu-icon {
-        display: block;
-    }
-
-    #mobile nav ul,
-    #mobile .submenu {
-        position: static;
-        display: block;
-        width: 100%;
-    }
-}
-
 /* Responsive considerations for medium screens */
-/* Responsive considerations for medium screens (max-width: 768px) */
 @media (max-width: 768px) {
     .search-container {
         justify-content: center;
         margin-right: 0;
     }
+
 
     main {
         width: 95%; /* Adjust main width for better readability */
@@ -189,8 +107,8 @@ nav a:hover {
 
 /* Additional responsive considerations for smaller screens*/
 
-/* Existing code for mobile screens (max-width: 480px) */
 @media (max-width: 480px) {
+    /* Adjust for smaller screens like mobile phones */
     main {
         width: 100%;
         padding: 15px;
@@ -210,19 +128,18 @@ nav a:hover {
     }
 
     nav a {
-        margin-bottom: 5px;
+        margin-bottom: 5px; /* Add space between nav items */
     }
 
     .cart-icon-container {
-        margin-bottom: 10px;
+        margin-bottom: 10px; /* Space for cart icon */
     }
 
     .mini-cart-dropdown {
-        width: 100%;
+        width: 100%; /* Full width for the dropdown */
     }
-
-    /* Additional styles for interaction or animations can be added here */
 }
+
 /* Additional styles for interaction or animations can be added here */
 
 /* Always remember to test your responsive design in various devices and screen sizes. */
@@ -234,8 +151,8 @@ ul.submenu {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #333;
-    border: 1px solid #444;
+    background-color: #333; /* Darker submenu background */
+    border: 1px solid #444; /* Darker submenu border */
     border-radius: 4px;
     min-width: 150px;
     z-index: 100;
@@ -249,7 +166,6 @@ ul.submenu li {
 nav ul li:hover > .submenu {
     display: block;
 }
-
 
 /* Footer styling */
 footer {
@@ -311,66 +227,19 @@ body, html {
     grid-gap: 20px;
     justify-content:center;
     align-items: center;
-  }
-  /* Styling Particular Image */
-  .gallery-img {
+    }
+/* Styling Particular Image */
+.gallery-img {
     width: 200px;
     height: 200px;
     cursor: pointer;
     transition: transform 0.2s;
-  }
-  /* onHover image will expand little bit */
-  .gallery-img:hover {
+    }
+/* onHover image will expand a little bit */
+.gallery-img:hover {
     transform: scale(1.1);
     cursor: zoom-in;
-  }
-  /* This section will be seen when we click on image */
-  .image-popup-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  /* close button when we want to close the bigger image */
-  .close-button {
-    position: absolute;
-    top: 20px;
-    right: 50px;
-    font-size:60px;
-    color: #fff;
-    cursor: pointer;
-  }
-  .close-button:hover{
-    color: red;
-  }
-  /* when we click on the image it will expand in bigger size and will displayed
- at middle of screen */
- #popupImage {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* This will ensure the image aspect ratio is maintained */
- }
- 
- 
- #prevButton, #nextButton {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
- }
- 
- 
- #prevButton {
-    left: 10px;
- }
- 
- 
- #nextButton {
-    right: 10px;
- }
- 
+}
 /* Media query for tablet devices */
 @media screen and (max-width: 768px) {
 .gallery {
@@ -483,7 +352,7 @@ width: 100%;
 
 #introduction p {
     font-size: 1.3em;
-    color: #faf7f7;
+    color: #ffffff;
     padding: 0;
      margin: 0;
         /* Add margin-top if you need space above the paragraph */
@@ -543,7 +412,7 @@ width: 100%;
 
 #introduction p {
     font-size: 1.3em;
-    color: #121111;
+    color: #f3f0f0;
     padding: 0;
     margin: 0;
     /* Add margin-top if you need space above the paragraph */
