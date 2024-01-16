@@ -582,11 +582,11 @@ grid-template-columns: 1fr; /* 1 column for very small screens */
 
 .filtered-product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1em;
-    justify-content: center;
-    padding: 5px;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Adjust the gap between items */
+    justify-content: center; /* Center-align the grid horizontally */
 }
+
 
 .filtered-product-item {
     border: 1px solid #ddd;

@@ -18,6 +18,9 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.urlencoded({ extended: true })); // Add this line
+
+
 const SQUARE_SANDBOX_ACCESS_TOKEN = process.env.SQUARE_SANDBOX_ACCESS_TOKEN;
 const SQUARE_APPLICATION_ID = process.env.SQUARE_APPLICATION_ID;
 const cache = new NodeCache({ stdTTL: 3600, checkperiod: 1200 });

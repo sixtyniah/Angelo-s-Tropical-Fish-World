@@ -69,6 +69,7 @@ function displayProducts(products, searchQuery) {
             productDiv.innerHTML = `
                 <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:300px; height:300px;">
                 <h3>${productName}</h3>
+                <p>${productDescription}</p>
                 <p>$${productPrice.toFixed(2)}</p>
             `;
 
@@ -91,11 +92,13 @@ function displayFilteredProducts(products, searchQuery) {
 
             // Create product elements
             const productDiv = document.createElement('div');
-            productDiv.className = 'filtered-item';
             productDiv.innerHTML = `
+            <div class="product-item">
                 <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:300px; height:300px;">
                 <h3>${productName}</h3>
+                <p>${productDescription}</p>
                 <p>$${productPrice.toFixed(2)}</p>
+                </div>
             `;
 
             filteredProductGrid.appendChild(productDiv); // Append to filtered product grid
@@ -105,12 +108,19 @@ function displayFilteredProducts(products, searchQuery) {
 }
 
 function updateProductGridLayout() {
-    const productGrid = document.getElementById('all-product-grid');
+    updateGridLayout('all-product-grid');
+    updateGridLayout('filtered-products');
+}
+
+function updateGridLayout(gridId) {
+    const productGrid = document.getElementById(gridId);
+    if (!productGrid) return; // Exit if the grid does not exist
+
     const productItems = productGrid.getElementsByClassName('product-item');
     const columnCount = 4; // Desired number of columns
 
     // Calculate the width for each column
-    const columnWidth = (100 / columnCount) + '%';
+    const columnWidth = 100 + '%';
 
     // Set the width for each product item to achieve the desired number of columns
     for (let i = 0; i < productItems.length; i++) {
