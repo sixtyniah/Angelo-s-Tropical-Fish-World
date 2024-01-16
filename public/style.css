@@ -15,25 +15,23 @@ main {
 }
 
 /* Update search-controls within the new container */
+#search-controls {
+    /* Add specific styles for search controls here */
+}
 
-/* Responsive considerations */
+/* Responsive considerations for medium screens */
 @media (max-width: 768px) {
     .search-container {
         justify-content: center;
         margin-right: 0;
     }
-}
 
-nav {
-    background-color: #333; /* Darker background */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
-    padding: 10px 15px;
-    color: #fff; /* Text color */
-}
+    nav {
+        /* Adjust nav styles for medium screens */
+    }
 
-/* Additional responsive considerations for smaller screens */
-@media (max-width: 768px) {
     main {
+        width: 95%; /* Adjust main width for better readability */
         align-items: center;
     }
 
@@ -41,9 +39,23 @@ nav {
         align-self: center;
         margin-right: 0;
     }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px; /* Space out nav items */
+    }
 }
 
-
+nav {
+    background-color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px 15px;
+    color: #fff;
+}
 
 nav ul {
     list-style-type: none;
@@ -68,10 +80,9 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #444; /* Darker on hover */
+    background-color: #444;
 }
 
-/* Styling for cart icon */
 .cart-icon-container {
     position: relative;
 }
@@ -81,7 +92,6 @@ nav a:hover {
     color: #fff;
 }
 
-/* Styling for mini-cart dropdown */
 .mini-cart-dropdown {
     position: absolute;
     right: 0;
@@ -98,6 +108,46 @@ nav a:hover {
     border-bottom: 1px solid #eee;
 }
 
+/* Additional responsive considerations for smaller screens
+
+@media (max-width: 480px) {
+    /* Adjust for smaller screens like mobile phones */
+    main {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav {
+        padding: 8px 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav a {
+        margin-bottom: 5px; /* Add space between nav items */
+    }
+
+    .cart-icon-container {
+        margin-bottom: 10px; /* Space for cart icon */
+    }
+
+    .mini-cart-dropdown {
+        width: 100%; /* Full width for the dropdown */
+    }
+}
+
+/* Additional styles for interaction or animations can be added here */
+
+/* Always remember to test your responsive design in various devices and screen sizes. */
+
+/* General styles that apply to all devices */
 /* Dropdown submenu functionality */
 ul.submenu {
     display: none;
@@ -129,7 +179,6 @@ footer {
 }
 
 /* Homepage styling */
-
 .cta-button {
     background: #007bff; /* Blue color */
     color: #fff;
@@ -151,7 +200,7 @@ footer {
     /* Make sure there is no bottom margin or padding that could cause space */
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box; /* Makes sure padding and borders are included in the total width and height */
@@ -172,33 +221,76 @@ body, html {
     text-align: center;
 }
 
-
-
 /* Styling gallery section where all images are */
 .gallery {
     width: 90%;
     margin:0 auto;
     display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 20px;
-    justify-content:center;
-    align-items: center; 
-  }
- 
-  /* Styling Particular Image */
-  .gallery-img {
-    width: 200px;
-    height: 200px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  /* onHover image will expand little bit */
-  .gallery-img:hover {
-    transform: scale(1.1);
-    cursor: zoom-in;
-  }
-  /* This section will be seen when we click on image */
-  .image-popup-container {
+    grid-template-columns: repeat(auto-fill, minmax(200
+
+px, 1fr));
+grid-gap: 20px;
+justify-content:center;
+align-items: center;
+}
+/* Styling Particular Image */
+.gallery-img {
+width: 200px;
+height: 200px;
+cursor: pointer;
+transition: transform 0.2s;
+}
+/* onHover image will expand a little bit */
+.gallery-img:hover {
+transform: scale(1.1);
+cursor: zoom-in;
+}
+/* Media query for tablet devices */
+@media screen and (max-width: 768px) {
+.gallery {
+grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.gallery-img {
+    width: 150px;
+    height: 150px;
+}
+
+/* Further tablet-specific styles here */
+}
+
+/* Media query for mobile devices /
+@media screen and (max-width: 480px) {
+nav ul, .submenu {
+/ Convert to vertical navigation for small screens */
+position: static;
+display: block;
+width: 100%;
+}
+.submenu li {
+    /* Ensure submenu items are full width */
+    width: 100%;
+}
+
+.cta-button, #about-us, #about-owner {
+    /* Adjust padding and text alignment for smaller screens */
+    padding: 10px;
+    text-align: left;
+}
+
+.gallery {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+.gallery-img {
+    width: 100px;
+    height: 100px;
+}
+
+/* Add additional mobile-specific styles here */
+
+}
+/* Styles for larger screens (default) */
+.image-popup-container {
     display: none;
     position: fixed;
     top: 0;
@@ -206,27 +298,25 @@ body, html {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-  }
- 
-  /* close button when we want to close the bigger image */
-  .close-button {
+}
+
+.close-button {
     position: absolute;
     top: 20px;
     right: 50px;
-    font-size:60px;
+    font-size: 60px;
     color: #fff;
     cursor: pointer;
-  }
-  .close-button:hover{
+}
+
+.close-button:hover {
     color: red;
-  }
- 
-  /* when we click on the image it will expand in bigger size and will displayed 
-at middle of screen */
+}
+
 #popupImage {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* This will ensure the image aspect ratio is maintained */
+    object-fit: contain; /* Maintains image aspect ratio */
 }
 
 #prevButton, #nextButton {
@@ -243,91 +333,62 @@ at middle of screen */
     right: 10px;
 }
 
- 
-  /* Making images more responsive for smaller size device */
-  @media (max-width:670px) {
-    .gallery{
+/* Responsive Design for smaller screens */
+@media (max-width: 670px) {
+    .gallery {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         grid-gap: 10px;
     }
-    .gallery-img{
-        width:150px;
+
+    .gallery-img {
+        width: 150px;
         height: 150px;
     }
- 
-  }
 
-#introduction {
-    background-image: url('headerimage.jpeg');
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100vw; 
-    height: 100vh; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    text-align: center;
-    }
-    
-    #introduction h2 {
-    font-size: 5.2em;
-    color: #f1f3f4; 
-    padding: 0;
-    margin: 0;
-    /* Remove margin-bottom if you don't need space below h2 */
+    /* Adjusting the close button for smaller screens */
+    .close-button {
+        top: 10px;
+        right: 20px;
+        font-size: 40px; /* Smaller font size */
     }
 
+    /* Adjusting the image and navigation buttons for smaller screens */
+    #popupImage {
+        /* Adjustments if necessary, like resizing */
+}
+#prevButton, #nextButton {
+    /* Adjust positions if necessary */
+}
 
-    .flex-container {
-        display: flex;
-        align-items: flex-start; /* Align items to the top */
-        margin-bottom: 20px; /* Space between sections */
-    }
-    
-    #about-us {
-        flex-direction: row-reverse;
-        width: 100%; /* Reverses the order for the About Us section */
-    }
-    
-    .about-image {
-        flex: 0 0 auto; /* Do not grow or shrink */
-        margin-left: 20px;
-        margin-right: 40px; /* Space between the image and the text */
-        width: 400px; /* Adjusted width for images */
-        height: auto; /* Maintain aspect ratio */
-    }
-    
-    .about-text {
-        flex: 1; /* Allows the text container to take the remaining space */
-    }
-    
-    /* Responsive adjustments for smaller screens */
-    @media (max-width: 768px) {
-        .flex-container {
-            flex-direction: column;
-            align-items: center;
-        }
-        .about-image {
-            margin-left: 0;
-            margin-bottom: 10px;
-            margin-right: 10px;
-            width: 90%; /* Adjust width on small screens */
-        }
-        .about-text {
-            width: 100%;
-        }
-    }
+/* Adjusting the introduction section for smaller screens */
+#introduction h2 {
+    font-size: 3em; /* Smaller font size for h2 */
+}
 
+/* Adjusting the layout of flex containers */
+.flex-container {
+    flex-direction: column; /* Stack elements vertically */
+}
 
-    #introduction p {
+.about-image {
+    width: 100%; /* Full width for smaller screens */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0; /* Reset margins */
+}
+
+}
+/* Your existing styles */
+.about-text {
+    flex: 1; /* Allows the text container to take the remaining space */
+}
+
+#introduction p {
     font-size: 1.3em;
     color: #faf7f7;
     padding: 0;
     margin: 0;
     /* Add margin-top if you need space above the paragraph */
-    }
+}
 
 /* Cart page styling */
 main {
@@ -395,46 +456,95 @@ main {
     max-width: 100%; /* Set maximum width for responsiveness */
 }
 
-/* Styling for product item image */
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-image {
+        margin-left: 0;
+        margin-bottom: 10px;
+        margin
+
+-right: 10px;
+width: 90%; /* Adjust width on small screens */
+}
+.about-text {
+width: 100%;
+}
+/* Adjust font size for introduction paragraph */
+#introduction p {
+    font-size: 1em; /* Smaller font size for mobile */
+}
+
+/* Adjust cart item layout */
+.cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Adjust the product grid for smaller screens */
+.all-product-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+}
+
+/* Adjust button size */
+#checkout-button {
+    padding: 10px 20px;
+}
+
+}
+/* Additional media query for very small screens /
+@media (max-width: 480px) {
+.all-product-grid {
+grid-template-columns: 1fr; / 1 column for very small screens */
+}
+/* Further reduce font size for the smallest screens */
+#introduction p {
+    font-size: 0.9em;
+}
+
+}/* Base CSS for larger devices like desktops and laptops */
+
 .all-product-item img {
-    max-width: 100%; /* Ensure the image fits within the container */
-    height: auto; /* Auto height to maintain aspect ratio */
-    display: block; /* Remove any extra spacing */
-    margin: 0 auto; /* Center-align the image horizontally */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .all-product-item:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for a "lifting" effect */
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .all-product-item h3 {
-    font-size: 1.2em; /* Adjust size as needed */
-    color: #333; /* Darker text color for contrast */
-    margin: 10px 0; /* Space around title */
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide overflowing text */
-    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .all-product-item p {
-    font-size: 1em; /* Adjust size as needed */
-    color: #666; /* Lighter text color for descriptions */
-    margin: 0; /* Remove default margin */
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide overflowing text */
-    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+    font-size: 1em;
+    color: #666;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .filtered-product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust the number of columns based on the container's width */
-    gap: 1px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1em;
     justify-content: center;
     padding: 5px;
 }
 
-/* Styling for each filtered product item */
 .filtered-product-item {
     border: 1px solid #ddd;
     padding: 5px;
@@ -443,19 +553,19 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 50%;
-    overflow: hidden; /* Add this to prevent overflow */
+    overflow: hidden;
 }
 
 .filtered-product-item img {
-    max-width: 100%; /* Ensure the image fits within the container */
-    height: auto; /* Auto height to maintain aspect ratio */
-    display: block; /* Remove any extra spacing */
-    margin: 0 auto; /* Center-align the image horizontally */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .filtered-product-item:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for a "lifting" effect */
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .filtered-product-item h3 {
@@ -477,25 +587,20 @@ main {
     line-height: 1.5 !important;
 }
 
-
-
-
-
 .add-to-cart-button {
-    background-color: #007bff; /* Consistent theme color for buttons */
+    background-color: #007bff;
     color: #fff;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    border-radius: 4px; /* Rounded corners for buttons */
+    border-radius: 4px;
     transition: background-color 0.3s;
 }
 
 .add-to-cart-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
-/* If you have titles for your product sections, you might want to style them as well */
 .section-title {
     text-align: center;
     font-size: 2em;
@@ -503,38 +608,69 @@ main {
     margin-bottom: 25px;
 }
 
-/* Styling for the featured products section */
+/* Responsive adjustments for smaller screens (e.g., tablets and mobile phones) */
+@media screen and (max-width: 768px) {
+    .all-product-item h3,
+    .filtered-product-item h3 {
+        font-size: 1em;
+    }
+
+    .all-product-item p,
+    .filtered-product-item p
+
+{
+font-size: 0.9em;
+}.filtered-product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.filtered-product-item {
+    max-width: 100%;
+}
+
+.add-to-cart-button {
+    padding: 12px 18px;
+}
+
+.section-title {
+    font-size: 1.5em;
+}
+
+}
+/* Further adjustments for very small screens like mobile phones */
+@media screen and (max-width: 480px) {
+.all-product-item h3,
+.filtered-product-item h3 {
+font-size: 0.9em;
+}
+.all-product-item p,
+.filtered-product-item p {
+    font-size: 0.8em;
+}
+
+/* Add any additional mobile-specific adjustments here */
+
+}/* Base Styles - apply to all devices */
 #featured-products {
-    border: none; /* Remove border */
+    border: none;
     padding: 15px;
     text-align: center;
-    background-color: #fff; /* Change to a lighter background */
-    border-radius: 8px; /* Rounded corners for a softer look */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
- 
-
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
-#featured-products {
-max-width: 100%; /* Ensure the image fits within the container */
-height: auto; /* Auto height to maintain aspect ratio */
-display: block; /* Remove any extra spacing */
-margin: 0 auto; /* Center-align the image horizontally */
-}
-
-
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     opacity: 1;
 }
 
-#contact-info {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-#contact-info2 {
+#contact-info, #contact-info2 {
     text-align: center;
     margin-bottom: 30px;
 }
@@ -571,7 +707,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 button {
-    background-color: #007bff; /* Blue color */
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -581,24 +717,123 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
-#subscribe-section {
+#subscribe-section, #hero {
     text-align: center;
     padding: 50px 20px;
 }
-
-#hero{
-    text-align: center;
-    padding: 50px 20px;
-}
-
 
 #subscribe-form {
     margin-top: 20px;
 }
 
+/* Responsive Styles */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: 90%; /* Adjust width for tablets */
+    }
+}
+
+/* Small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+    #contact-form {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: 100%; /* Full width on small devices */
+    }
+
+    #hero, #subscribe-section {
+        padding: 20px 10px;
+    }
+
+    button {
+        padding: 8px 16px; /* Smaller padding on small devices */
+    }
+}
+
+/* Additional styles for small devices */
+@media (max-width: 600px) {
+    #featured-products {
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Less pronounced shadow */
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        margin-bottom: 3px;
+    }
+
+    .form-group textarea {
+        height: 80px; /* Smaller text area */
+    }
+
+    button {
+        padding: 8px 15px; /* Smaller buttons */
+        font-size: 14px; /* Smaller font size */
+    }
+
+    #contact-info, #contact-info2 {
+        margin-bottom: 20px;
+    }
+
+    #subscribe-section, #hero {
+        padding: 30px 15px;
+    }
+}
+
+/* Styles for medium devices (tablets) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    #featured-products {
+        padding: 12px;
+    }
+
+    .form-group textarea {
+        height: 90px;
+    }
+
+    #contact-info, #contact-info2 {
+        margin-bottom: 25px;
+    }
+
+    #subscribe-section, #hero {
+        padding: 40px 25px;
+    }
+}
+
+/* Styles for large devices (desktops) */
+@media (min-width: 1025px) {
+    #featured-products {
+        padding: 15px;
+    }
+
+    .form-group textarea {
+        height: 100px;
+    }
+
+    #contact-info, #contact-info2 {
+        margin-bottom: 30px;
+    }
+
+    #subscribe-section, #hero {
+        padding: 50px 20px;
+    }
+}
+
+/* Existing Styles */
 #subscribe-form input[type="email"] {
     width: 70%;
     padding: 10px;
@@ -628,7 +863,6 @@ button:hover {
     margin: auto; /* Center the slider */
 }
 
-
 .slider-track {
     display: flex;
     flex-wrap: nowrap;
@@ -640,14 +874,11 @@ button:hover {
     /* Additional styles for testimonials */
 }
 
-
-/* Swiper Container Styling */
 .swiper {
     width: 100%; /* Ensures that the slider takes full width */
     height: auto; /* Adjust height as needed */
 }
 
-/* Swiper Slide Styling */
 .swiper-slide {
     display: flex;
     justify-content: center;
@@ -655,7 +886,6 @@ button:hover {
     text-align: center;
 }
 
-/* Ensure the image sizes are controlled within the slides */
 .swiper-slide img {
     max-width: 100%;
     height: auto;
@@ -663,42 +893,88 @@ button:hover {
     margin: 0 auto; /* Center the image */
 }
 
-/* Testimonials Section Styling */
 #customer-testimonials {
     padding: 20px;
     background-color: #f2f2f2; /* Light background for the section */
     text-align: center;
 }
 
-/* Individual Testimonial Item */
 .testimonial-item {
     padding: 15px;
     background-color: #fff; /* White background for each testimonial */
     border-radius: 10px; /* Rounded corners for the testimonials */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    margin: 10px;
-    text-align: center; /* Center align the text */
-}
+    box-shadow: 0 4px 8
 
-/* Testimonial Image */
+px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth /
+margin: 10px;
+text-align: center; / Center align the text */
+}
 .testimonial-item .testimonial-img {
-    width: 80px; /* Adjust size as needed */
-    height: 80px; /* Adjust size as needed */
-    border-radius: 50%; /* Circular images */
-    margin: 0 auto; /* Center the image */
-    border: 3px solid #03a9f4; /* Border color for the images */
+width: 80px; /* Adjust size as needed /
+height: 80px; / Adjust size as needed /
+border-radius: 50%; / Circular images /
+margin: 0 auto; / Center the image /
+border: 3px solid #03a9f4; / Border color for the images */
 }
-
-/* Testimonial Text */
 .testimonial-item h3, .testimonial-item h4 {
-    color: #333; /* Darker text color */
-    margin: 10px 0;
+color: #333; /* Darker text color */
+margin: 10px 0;
+}
+.testimonial-item p {
+color: #666; /* Lighter text color for testimonial text /
+font-style: italic; / Italicize the testimonial text */
+}
+/* Responsive Design Adjustments */
+/* For tablets and small desktops */
+@media (max-width: 768px) {
+#subscribe-form input[type="email"], #subscribe-form button {
+width: 100%;
+margin-top: 10px;
+border-radius: 4px;
+}
+#subscribe-form button {
+    margin-right: 0;
 }
 
-.testimonial-item p {
-    color: #666; /* Lighter text color for testimonial text */
-    font-style: italic; /* Italicize the testimonial text */
+.slider {
+    width: 90%; /* Adjust for smaller screens */
 }
+
+.testimonial {
+    width: 100%; /* Adjust for smaller screens */
+}
+
+#subscribe-form button {
+    margin-right: 0;
+}
+
+.slider {
+    width: 90%; /* Adjust for smaller screens */
+}
+
+.testimonial {
+    width: 100%; /* Adjust for smaller screens */
+}
+
+}/* For mobile phones /
+@media (max-width: 480px) {
+.slider {
+width: 100%; / Full width on small screens */
+}
+.testimonial, .swiper-slide {
+    width: 100%; /* Full width on small screens */
+}
+
+.testimonial-item {
+    padding: 10px; /* Slightly smaller padding */
+}
+
+.testimonial-item .testimonial-img {
+    width: 60px; /* Smaller image size */
+    height: 60px; /* Smaller image size */
+}
+
+}/* Base styles - these apply to all devices */
 
 /* Quote Icons */
 .quote-icon-left, .quote-icon-right {
@@ -727,9 +1003,49 @@ button:hover {
     margin-bottom: 30px; /* Add spacing below the text */
 }
 
-
 /* Styling for Font Awesome icons in the footer */
 footer .fab {
     color: white; /* Set the icon color to white */
 }
+
+/* Media queries for responsiveness */
+
+/* For tablets: */
+@media (max-width: 768px) {
+    .quote-icon-left, .quote-icon-right {
+        font-size: 20px; /* Slightly smaller quote icons */
+    }
+
+    .social-icons {
+        font-size: 20px; /* Slightly smaller icons */
+    }
+
+    #social-media h2 {
+        font-size: 12px; /* Slightly smaller text */
+    }
+
+    /* Additional tablet-specific styles here */
+}
+
+/* For mobile phones: */
+@media (max-width: 480px) {
+    .quote-icon-left, .quote-icon-right {
+        font-size: 16px; /* Much smaller quote icons for mobile */
+    }
+
+    .social-icons {
+        font-size: 18px; /* Smaller icons for mobile */
+        margin-top: 5px; /* Less spacing between icons and text */
+    }
+
+    #social-media h2 {
+        font-size: 10px; /* Smaller text for mobile */
+        margin-bottom: 20px; /* Less spacing below the text */
+    }
+
+    /* Additional mobile-specific styles here */
+}
+
+
+
 
