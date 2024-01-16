@@ -224,11 +224,6 @@ body, html {
     margin-bottom: 20px; /* Space between sections */
 }
 
-#about-us {
-    flex-direction: row-reverse;
-    width: 100%; /* Reverses the order for the About Us section */
-}
-
 .about-image {
     flex: 0 0 auto; /* Do not grow or shrink */
     margin-left: 20px;
