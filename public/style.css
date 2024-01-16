@@ -330,6 +330,37 @@ width: 100%;
     right: 10px;
 }
 
+#introduction {
+    background-image: url('headerimage.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    }
+   
+ #introduction h2 {
+    font-size: 5.2em;
+    color: #f1f3f4;
+    padding: 0;
+    margin: 0;
+    /* Remove margin-bottom if you don't need space below h2 */
+    }
+
+#introduction p {
+    font-size: 1.3em;
+    color: #faf7f7;
+    padding: 0;
+     margin: 0;
+        /* Add margin-top if you need space above the paragraph */
+        }
+      
+
 /* Responsive Design for smaller screens */
 @media (max-width: 670px) {
     .gallery {
@@ -356,6 +387,8 @@ width: 100%;
 #prevButton, #nextButton {
     /* Adjust positions if necessary */
 }
+
+
 
 /* Adjusting the introduction section for smaller screens */
 #introduction h2 {
