@@ -218,6 +218,28 @@ body, html {
     text-align: center;
 }
 
+.flex-container {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 20px; /* Space between sections */
+}
+
+#about-us {
+    flex-direction: row-reverse;
+    width: 100%; /* Reverses the order for the About Us section */
+}
+
+.about-image {
+    flex: 0 0 auto; /* Do not grow or shrink */
+    margin-left: 20px;
+    margin-right: 40px; /* Space between the image and the text */
+    width: 400px; /* Adjusted width for images */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.about-text {
+    flex: 1; /* Allows the text container to take the remaining space */
+}
 /* Styling gallery section where all images are */
 .gallery {
     width: 90%;
@@ -494,31 +516,31 @@ main {
         margin-left: 0;
         margin-bottom: 10px;
         margin-right: 10px;
-width: 90%; /* Adjust width on small screens */
-}
-.about-text {
-width: 100%;
-}
-/* Adjust font size for introduction paragraph */
-#introduction p {
-    font-size: 1em; /* Smaller font size for mobile */
-}
+        width: 90%; /* Adjust width on small screens */
+    }
+    .about-text {
+    width: 100%;
+    }
+    /* Adjust font size for introduction paragraph */
+    #introduction p {
+        font-size: 1em; /* Smaller font size for mobile */
+    }
 
-/* Adjust cart item layout */
-.cart-item {
-    flex-direction: column;
-    align-items: flex-start;
-}
+    /* Adjust cart item layout */
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-/* Adjust the product grid for smaller screens */
-.all-product-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
-}
+    /* Adjust the product grid for smaller screens */
+    .all-product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
 
-/* Adjust button size */
-#checkout-button {
-    padding: 10px 20px;
-}
+    /* Adjust button size */
+    #checkout-button {
+        padding: 10px 20px;
+    }
 
 }
 /* Additional media query for very small screens */
