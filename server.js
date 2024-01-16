@@ -14,6 +14,8 @@ app.use(cors());
 app.use(express.json());
 app.use(compression());
 
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 const SQUARE_SANDBOX_ACCESS_TOKEN = process.env.SQUARE_SANDBOX_ACCESS_TOKEN;
