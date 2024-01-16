@@ -26,9 +26,6 @@ main {
         margin-right: 0;
     }
 
-    nav {
-        /* Adjust nav styles for medium screens */
-    }
 
     main {
         width: 95%; /* Adjust main width for better readability */
@@ -108,7 +105,7 @@ nav a:hover {
     border-bottom: 1px solid #eee;
 }
 
-/* Additional responsive considerations for smaller screens
+/* Additional responsive considerations for smaller screens*/
 
 @media (max-width: 480px) {
     /* Adjust for smaller screens like mobile phones */
@@ -258,10 +255,10 @@ grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 /* Further tablet-specific styles here */
 }
 
-/* Media query for mobile devices /
+/* Media query for mobile devices*/
 @media screen and (max-width: 480px) {
 nav ul, .submenu {
-/ Convert to vertical navigation for small screens */
+/*Convert to vertical navigation for small screens */
 position: static;
 display: block;
 width: 100%;
@@ -465,9 +462,7 @@ main {
     .about-image {
         margin-left: 0;
         margin-bottom: 10px;
-        margin
-
--right: 10px;
+        margin-right: 10px;
 width: 90%; /* Adjust width on small screens */
 }
 .about-text {
@@ -495,10 +490,10 @@ width: 100%;
 }
 
 }
-/* Additional media query for very small screens /
+/* Additional media query for very small screens */
 @media (max-width: 480px) {
 .all-product-grid {
-grid-template-columns: 1fr; / 1 column for very small screens */
+grid-template-columns: 1fr; /* 1 column for very small screens */
 }
 /* Further reduce font size for the smallest screens */
 #introduction p {
