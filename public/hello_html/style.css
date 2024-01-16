@@ -376,46 +376,110 @@ main {
     background-color: #218838; /* Darker green on hover */
 }
 
-.product-item {
-    border: none; /* Remove border */
-    padding: 15px;
-    text-align: center;
-    background-color: #fff; /* Change to a lighter background */
-    border-radius: 8px; /* Rounded corners for a softer look */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+/* Styling for the product container */
+.all-product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Adjust the gap between items */
+    justify-content: center; /* Center-align the grid horizontally */
 }
 
-.product-item:hover {
+/* Styling for each product item */
+.all-product-item {
+    border: 1px solid #ddd; /* Add borders to each item */
+    padding: 10px;
+    background-color: #fff; /* Background color for each item */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center-align text */
+    max-width: 100%; /* Set maximum width for responsiveness */
+}
+
+/* Styling for product item image */
+.all-product-item img {
+    max-width: 100%; /* Ensure the image fits within the container */
+    height: auto; /* Auto height to maintain aspect ratio */
+    display: block; /* Remove any extra spacing */
+    margin: 0 auto; /* Center-align the image horizontally */
+}
+
+.all-product-item:hover {
     transform: translateY(-5px); /* Slight lift on hover */
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for a "lifting" effect */
 }
 
-.product-item img {
-    width: auto; /* Adjust as needed */
-    height: 150px; /* Adjust as needed */
-    object-fit: cover; /* Ensures images are nicely fitted */
-    border-radius: 4px; /* Rounded corners for images */
-    margin-bottom: 15px; /* Space between image and text */
-}
-
-.product-item h3 {
+.all-product-item h3 {
     font-size: 1.2em; /* Adjust size as needed */
     color: #333; /* Darker text color for contrast */
-    margin-bottom: 10px; /* Space between title and description */
+    margin: 10px 0; /* Space around title */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
 }
 
-.product-item p {
+.all-product-item p {
     font-size: 1em; /* Adjust size as needed */
     color: #666; /* Lighter text color for descriptions */
-    margin-bottom: 15px; /* Space between description and price */
+    margin: 0; /* Remove default margin */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
 }
 
-.price {
-    color: #03a9f4; /* Bright theme color for price */
-    font-weight: bold;
-    margin-bottom: 15px; /* Space between price and button */
+.filtered-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust the number of columns based on the container's width */
+    gap: 1px;
+    justify-content: center;
+    padding: 5px;
 }
+
+/* Styling for each filtered product item */
+.filtered-product-item {
+    border: 1px solid #ddd;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 50%;
+    overflow: hidden; /* Add this to prevent overflow */
+}
+
+.filtered-product-item img {
+    max-width: 100%; /* Ensure the image fits within the container */
+    height: auto; /* Auto height to maintain aspect ratio */
+    display: block; /* Remove any extra spacing */
+    margin: 0 auto; /* Center-align the image horizontally */
+}
+
+.filtered-product-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for a "lifting" effect */
+}
+
+.filtered-product-item h3 {
+    font-size: 1.2em !important;
+    color: #333 !important;
+    margin: 10px 0 5px 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.filtered-product-item p {
+    font-size: 1em !important;
+    color: #666 !important;
+    margin: 5px 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    line-height: 1.5 !important;
+}
+
+
+
+
 
 .add-to-cart-button {
     background-color: #007bff; /* Consistent theme color for buttons */
@@ -448,6 +512,14 @@ main {
     border-radius: 8px; /* Rounded corners for a softer look */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
+ 
+
+}
+#featured-products {
+max-width: 100%; /* Ensure the image fits within the container */
+height: auto; /* Auto height to maintain aspect ratio */
+display: block; /* Remove any extra spacing */
+margin: 0 auto; /* Center-align the image horizontally */
 }
 
 
@@ -568,13 +640,7 @@ button:hover {
     /* Additional styles for testimonials */
 }
 
-.product-item {
-    border: none; /* Remove borders */
-    box-shadow: none; /* Remove shadows if any */
-    background-color: transparent;
-/* Remove background color */
-    /* other styles... */
-}
+
 /* Swiper Container Styling */
 .swiper {
     width: 100%; /* Ensures that the slider takes full width */
@@ -657,9 +723,10 @@ button:hover {
 
 /* Style for the "Connect with Us" text */
 #social-media h2 {
-    font-size: 18px; /* Adjust the text size */
-    margin-bottom: 10px; /* Add spacing below the text */
+    font-size: 14px; /* Adjust the text size */
+    margin-bottom: 30px; /* Add spacing below the text */
 }
+
 
 /* Styling for Font Awesome icons in the footer */
 footer .fab {

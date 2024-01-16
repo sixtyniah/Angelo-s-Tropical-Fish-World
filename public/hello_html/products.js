@@ -1,14 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetchProducts('all');
-    fetchFeaturedProducts(); 
-    setInterval(moveSlider, 3000);// Add this line to fetch featured products
-    const subpage = getCurrentSubpage();
-    fetchProducts('all', '', subpage);
-
     const categoryFilter = document.getElementById('category-filter');
     const searchInput = document.getElementById('product-search');
 
     let debounceTimer;
+    
     if (searchInput) {
         searchInput.addEventListener('input', function() {
             clearTimeout(debounceTimer);
@@ -19,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     if (categoryFilter) {
         categoryFilter.addEventListener('change', function() {
             console.log("Filter changed to:", this.value); // this.value is now the category ID
@@ -27,13 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (searchInput) {
-        searchInput.addEventListener('input', function() {
-            console.log("Search query:", this.value);
-            fetchProducts(categoryFilter ? categoryFilter.value : 'all', this.value);
-        });
-    }
+    // Fetch and display products for the first time after DOM is loaded
+    fetchProducts('all');
+    fetchFeaturedProducts(); 
+    setInterval(moveSlider, 3000); // Add this line to fetch featured products
+    const subpage = getCurrentSubpage();
+    fetchProducts('all', '', subpage);
 });
+
+// Rest of your code...
 
 
 function fetchProducts(categoryName, searchQuery = '') {
@@ -58,30 +54,72 @@ function fetchProducts(categoryName, searchQuery = '') {
 
 function displayProducts(products, searchQuery) {
     const productGrid = document.getElementById('all-product-grid');
-    productGrid.innerHTML = '';
+    productGrid.innerHTML = ''; // Clear any existing content
 
     products.forEach(product => {
         if (product.type === 'ITEM' && product.item_data) {
             const productName = product.item_data.name;
+            const imageUrl = product.imageUrl || 'default-image-url.jpg'; // Default image URL
+            const productDescription = product.item_data.description || '';
+            const productPrice = product.item_data.variations[0].item_variation_data.price_money.amount / 100; // Assuming price is in the first variation and in cents
 
-            if (!searchQuery || productName.toLowerCase().includes(searchQuery.toLowerCase())) {
-                const imageUrl = product.imageUrl || 'default-image-url.jpg'; 
-                const productDescription = product.item_data.description || '';
-                const productPrice = product.item_data.variations[0].item_variation_data.price_money.amount / 100; // Assuming price is in the first variation and in cents
+            // Create product elements
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product-item';
+            productDiv.innerHTML = `
+                <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:300px; height:300px;">
+                <h3>${productName}</h3>
+                <p>${productDescription}</p>
+                <p>$${productPrice.toFixed(2)}</p>
+            `;
 
-                const productDiv = document.createElement('div');
-                productDiv.className = 'product-item';
-                productDiv.innerHTML = `
-                    <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:100px; height:100px;">
-                    <h3>${productName}</h3>
-                    <p>${productDescription}</p>
-                    <p>$${productPrice.toFixed(2)}</p>
-                `;
-                productGrid.appendChild(productDiv);
-            }
+            productGrid.appendChild(productDiv); // Append to product grid
         }
     });
+    updateProductGridLayout(); // Update the grid layout
 }
+
+function displayFilteredProducts(products, searchQuery) {
+    const filteredProductGrid = document.getElementById('filtered-products');
+    filteredProductGrid.innerHTML = ''; // Clear any existing content
+
+    products.forEach(product => {
+        if (product.type === 'ITEM' && product.item_data) {
+            const productName = product.item_data.name;
+            const imageUrl = product.imageUrl || 'default-image-url.jpg'; // Default image URL
+            const productDescription = product.item_data.description || '';
+            const productPrice = product.item_data.variations[0].item_variation_data.price_money.amount / 100; // Assuming price is in the first variation and in cents
+
+            // Create product elements
+            const productDiv = document.createElement('div');
+            productDiv.className = 'filtered-item';
+            productDiv.innerHTML = `
+                <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:300px; height:300px;">
+                <h3>${productName}</h3>
+                <p>${productDescription}</p>
+                <p>$${productPrice.toFixed(2)}</p>
+            `;
+
+            filteredProductGrid.appendChild(productDiv); // Append to filtered product grid
+        }
+    });
+    updateProductGridLayout();
+}
+
+function updateProductGridLayout() {
+    const productGrid = document.getElementById('all-product-grid');
+    const productItems = productGrid.getElementsByClassName('product-item');
+    const columnCount = 4; // Desired number of columns
+
+    // Calculate the width for each column
+    const columnWidth = (100 / columnCount) + '%';
+
+    // Set the width for each product item to achieve the desired number of columns
+    for (let i = 0; i < productItems.length; i++) {
+        productItems[i].style.width = columnWidth;
+    }
+}
+
 
 
 
@@ -149,7 +187,7 @@ function displayFeaturedProducts(products) {
             productDiv.className = 'swiper-slide';
             productDiv.innerHTML = `
                 <div class="product-item">
-                    <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:100px; height:100px;">
+                    <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:300px; height:300px;">
                     <h3>${productName}</h3>
                     <p>${productDescription}</p>
                     <p>$${productPrice.toFixed(2)}</p>
