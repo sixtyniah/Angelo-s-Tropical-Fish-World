@@ -7,10 +7,13 @@ import compression from 'compression';
 
 dotenv.config();
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(compression());
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 const SQUARE_SANDBOX_ACCESS_TOKEN = process.env.SQUARE_SANDBOX_ACCESS_TOKEN;
 const SQUARE_APPLICATION_ID = process.env.SQUARE_APPLICATION_ID;
@@ -144,6 +147,11 @@ app.post('/process-payment', async (req, res) => {
     const { nonce, amount } = req.body;
     console.log(`Processing payment for amount: ${amount} with nonce: ${nonce}`);
     res.json({ message: 'Payment processed successfully', amount: amount });
+});
+
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
