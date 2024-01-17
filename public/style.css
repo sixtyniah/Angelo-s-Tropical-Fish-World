@@ -1,4 +1,13 @@
 /* Base styling for navigation */
+iframe[src*='google.com'] .freebirdFormviewerViewHeaderTitle {
+    display: none;
+}
+
+iframe[src*='google.com'] .freebirdFormviewerViewHeaderEmail {
+    display: none;
+}
+
+
 main {
     width: 85%;
     margin: 0 auto;
@@ -719,9 +728,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #contact-form {
-    max-width: 500px;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
