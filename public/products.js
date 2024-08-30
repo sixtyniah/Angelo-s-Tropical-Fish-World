@@ -165,17 +165,7 @@ function setupPagination(totalPages, currentPage, categoryName, searchQuery) {
 
 
 
-function updateProductGridLayout() {
-    const productGrid = document.getElementById('all-product-grid');
-    if (!productGrid) return;
 
-    const productItems = productGrid.getElementsByClassName('product-item');
-    const columnCount = 4;
-
-    for (let i = 0; i < productItems.length; i++) {
-        productItems[i].style.width = 100 + '%';
-    }
-}
 
 // The other functions, such as fetchFeaturedProducts and moveSlider, remain unchanged.
 
@@ -205,24 +195,17 @@ function displayFilteredProducts(products, searchQuery) {
             filteredProductGrid.appendChild(productDiv); // Append to filtered product grid
         }
     });
-    updateProductGridLayout();
 }
+
 
 
 function updateGridLayout(gridId) {
     const productGrid = document.getElementById(gridId);
     if (!productGrid) return;
 
+    // No need to set widths manually; let CSS Grid handle it.
     const productItems = productGrid.getElementsByClassName('product-item');
-    const columnCount = 4; // Assuming you want 4 columns
-
-    // Remove setting width to 100% directly; rely on CSS Grid instead
-    // productItems[i].style.width = '100%';
-
-    // Alternatively, if you must use widths:
-    for (let i = 0; i < productItems.length; i++) {
-        productItems[i].style.width = `calc(100% / ${columnCount} - 20px)`; // Adjust for gap
-    }
+    // Remove the loop that manually sets the width of product items
 }
 
 
