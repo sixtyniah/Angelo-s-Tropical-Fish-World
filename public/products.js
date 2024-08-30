@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchProducts('all');
 });
 
-function fetchProducts(categoryName = 'all', searchQuery = '', page = 1, limit = 20) {
+function fetchProducts(categoryName = 'all', searchQuery = '', page = 1, limit = 12) {
     const backendUrl = '';
     const queryParams = new URLSearchParams({
         category: categoryName,

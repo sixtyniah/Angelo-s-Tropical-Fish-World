@@ -3,6 +3,18 @@ document.addEventListener('DOMContentLoaded', function() {
     loadComponent('footer.html', 'footer-placeholder');
     loadComponent('holiday-notice.html', 'holiday-notice-placeholder');
 
+        // Hamburger menu functionality
+        const menuIcon = document.getElementById('menu-icon');
+        const menuList = document.getElementById('menu-list');
+    
+        if (menuIcon) {
+            menuIcon.addEventListener('click', function() {
+                menuList.classList.toggle('active');
+            });
+        }
+    
+        // Add event listener for closing the image
+
     // Add event listener for closing the image
     const closeButton = document.querySelector('.close-button');
     if (closeButton) {
