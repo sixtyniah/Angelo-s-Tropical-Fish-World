@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchProductDetails(productId) {
-    const backendUrl = 'http://localhost:3000';
+    const backendUrl = '';
 
     // Show a loading state while fetching
     displayLoadingState();

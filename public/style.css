@@ -15,6 +15,72 @@ main {
     /* Other styles... */
 }
 
+/* General styles for product grid */
+.all-product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+.all-product-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Required for the raising effect */
+}
+
+.all-product-item:hover {
+    transform: translateY(-10px); /* Raise effect */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Styling for the product image */
+.all-product-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease; /* Smooth image transition */
+}
+
+.all-product-item img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Styling for the product name */
+.all-product-item h3 {
+    font-size: 1.4em;
+    color: #333; /* Keep the product name black */
+    margin: 15px 0 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: transform 0.3s ease; /* Smooth transition for the raise effect */
+}
+
+.all-product-item:hover h3 {
+    transform: translateY(-5px); /* Raise the product name on hover */
+    font-weight: bold; /* Optional: make the name bold on hover */
+}
+
+/* Styling for the product price */
+.all-product-item p {
+    font-size: 1.2em; /* Increase the font size for the price */
+    color: #666;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold; /* Make the price bold */
+    margin-top: 10px;
+    color: #333; /* Darker color for price */
+}
+
 .pagination {
     display: flex;
     align-items: center;
@@ -531,24 +597,6 @@ main {
     background-color: #218838; /* Darker green on hover */
 }
 
-/* Styling for the product container */
-.all-product-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 20px; /* Adjust the gap between items */
-    justify-content: center; /* Center-align the grid horizontally */
-}
-
-/* Styling for each product item */
-.all-product-item {
-    border: 1px solid #ddd; /* Add borders to each item */
-    padding: 10px;
-    background-color: #fff; /* Background color for each item */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Center-align text */
-    max-width: 100%; /* Set maximum width for responsiveness */
-}
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
@@ -599,35 +647,7 @@ grid-template-columns: 1fr; /* 1 column for very small screens */
 
 }/* Base CSS for larger devices like desktops and laptops */
 
-.all-product-item img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
 
-.all-product-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-.all-product-item h3 {
-    font-size: 1.2em;
-    color: #333;
-    margin: 10px 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.all-product-item p {
-    font-size: 1em;
-    color: #666;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 
 .filtered-product-grid {
     display: grid;

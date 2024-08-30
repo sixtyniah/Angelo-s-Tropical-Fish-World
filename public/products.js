@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchProducts(categoryName = 'all', searchQuery = '', page = 1, limit = 20) {
-    const backendUrl = 'http://localhost:3000';
+    const backendUrl = '';
     const queryParams = new URLSearchParams({
         category: categoryName,
         search: searchQuery,
