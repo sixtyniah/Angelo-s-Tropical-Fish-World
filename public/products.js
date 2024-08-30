@@ -56,7 +56,6 @@ function fetchProducts(categoryName = 'all', searchQuery = '', page = 1, limit =
         limit: limit
     });
 
-    // Show a loading indicator while fetching
     document.getElementById('all-product-grid').innerHTML = '<p>Loading...</p>';
 
     fetch(`${backendUrl}/api/products?${queryParams.toString()}`)
@@ -69,12 +68,14 @@ function fetchProducts(categoryName = 'all', searchQuery = '', page = 1, limit =
         .then(data => {
             displayProducts(data.items);
             setupPagination(data.totalPages, data.currentPage, categoryName, searchQuery);
+            updateGridLayout('all-product-grid'); // Add this line to update the layout
         })
         .catch(error => {
             console.error('Error fetching products:', error);
             document.getElementById('all-product-grid').innerHTML = '<p>Failed to load products. Please try again later.</p>';
         });
 }
+
 
 function displayProducts(products) {
     const productGrid = document.getElementById('all-product-grid');
@@ -210,19 +211,20 @@ function displayFilteredProducts(products, searchQuery) {
 
 function updateGridLayout(gridId) {
     const productGrid = document.getElementById(gridId);
-    if (!productGrid) return; // Exit if the grid does not exist
+    if (!productGrid) return;
 
     const productItems = productGrid.getElementsByClassName('product-item');
-    const columnCount = 4; // Desired number of columns
+    const columnCount = 4; // Assuming you want 4 columns
 
-    // Calculate the width for each column
-    const columnWidth = 100 + '%';
+    // Remove setting width to 100% directly; rely on CSS Grid instead
+    // productItems[i].style.width = '100%';
 
-    // Set the width for each product item to achieve the desired number of columns
+    // Alternatively, if you must use widths:
     for (let i = 0; i < productItems.length; i++) {
-        productItems[i].style.width = columnWidth;
+        productItems[i].style.width = `calc(100% / ${columnCount} - 20px)`; // Adjust for gap
     }
 }
+
 
 
 
@@ -250,8 +252,9 @@ function addToCart(itemName, itemPrice, itemImage) {
 }
 
 // Function to fetch and display featured products
+// Function to fetch and display featured products
 function fetchFeaturedProducts() {
-    const backendUrl = '';
+    const backendUrl = ''; // Make sure this points to your backend API
     const featuredCategoryID = 'M7T5QB4HWAR5CLKY7DJSTRFK'; // Replace with the actual category ID for "Featured Items"
     
     fetch(`${backendUrl}/api/products?category=${encodeURIComponent(featuredCategoryID)}`)
@@ -262,7 +265,6 @@ function fetchFeaturedProducts() {
             return response.json();
         })
         .then(data => {
-            console.log("Received featured products:", data);
             if (data.items && data.items.length > 0) {
                 displayFeaturedProducts(data.items);
             } else {
@@ -274,8 +276,7 @@ function fetchFeaturedProducts() {
         });
 }
 
-
-
+// Function to display the fetched products in the Swiper slider
 function displayFeaturedProducts(products) {
     const swiperWrapper = document.getElementById('swiper-wrapper-featured');
     swiperWrapper.innerHTML = ''; // Clear any existing content
@@ -283,7 +284,7 @@ function displayFeaturedProducts(products) {
     products.forEach(product => {
         if (product.type === 'ITEM' && product.item_data) {
             const productName = product.item_data.name;
-            const imageUrl = product.imageUrl || 'default-image-url.jpg';
+            const imageUrl = product.imageUrl || 'default-image-url.jpg'; // Fallback if no image is available
             const productDescription = product.item_data.description || '';
             const productPrice = product.item_data.variations[0].item_variation_data.price_money.amount / 100;
 
@@ -298,13 +299,41 @@ function displayFeaturedProducts(products) {
                 </div>
             `;
 
-            swiperWrapper.appendChild(productDiv); // Append to swiper-wrapper
+            swiperWrapper.appendChild(productDiv); // Append each product as a slide
         }
     });
 
     // Re-initialize or update Swiper
     initializeOrUpdateSwiper();
 }
+
+// Function to initialize or update the Swiper instance
+function initializeOrUpdateSwiper() {
+    if (window.featuredProductsSwiper) {
+        window.featuredProductsSwiper.update();
+    } else {
+        window.featuredProductsSwiper = new Swiper('.products-slider', {
+            speed: 600,
+            loop: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false
+            },
+            slidesPerView: 'auto',
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+                clickable: true
+            }
+        });
+    }
+}
+
+// Ensure the featured products are fetched when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    fetchFeaturedProducts();
+});
+
 
 function initializeOrUpdateSwiper() {
     if (window.featuredProductsSwiper) {

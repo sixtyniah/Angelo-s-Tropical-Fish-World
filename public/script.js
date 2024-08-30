@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', function() {
     loadComponent('navigation.html', 'navigation-placeholder');
     loadComponent('footer.html', 'footer-placeholder');
@@ -10,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (closeButton) {
         closeButton.addEventListener('click', closeImage);
     }
-
 
     const dropdowns = document.querySelectorAll('nav > ul > li');
     
@@ -79,78 +76,97 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update mini-cart display on page load
     updateMiniCartDisplay();
+
+    // Fetch and display featured products
+    fetchFeaturedProducts(); // Add this line here
+
+    // Initialize Swiper for testimonials
+    new Swiper('.testimonials-slider', {
+        speed: 600,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
+        },
+        slidesPerView: 'auto',
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true
+        }
+    });
+
+    new Swiper('.products-slider', {
+        speed: 600,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
+        },
+        slidesPerView: 'auto',
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true
+        }
+    });
 });
 
-function addToCart(product) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const existingProduct = cart.find(item => item.id === product.id);
-    if (existingProduct) {
-        existingProduct.quantity += 1;
-    } else {
-        cart.push(product);
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartDisplay();
-    updateMiniCartDisplay();
-}
+// Function to fetch and display featured products
+function fetchFeaturedProducts() {
+    const backendUrl = '/api/products?category=M7T5QB4HWAR5CLKY7DJSTRFK'; // Adjust the category ID for featured items
 
-function updateCartDisplay() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
-    const cartItemCount = document.getElementById('cart-item-count');
-    if (cartItemCount) {
-        cartItemCount.innerText = itemCount;
-    }
-}
+    fetch(backendUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const swiperWrapper = document.getElementById('swiper-wrapper-featured');
+            swiperWrapper.innerHTML = ''; // Clear any existing content
 
-function updateMiniCartDisplay() {
-    const miniCart = document.querySelector('.mini-cart-dropdown');
-    if (miniCart) {
-        miniCart.innerHTML = ''; // Clear existing mini-cart items
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.forEach(item => {
-            const miniCartItemEl = document.createElement('div');
-            miniCartItemEl.className = 'mini-cart-item';
-            miniCartItemEl.innerHTML = `
-                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto;">
-                <span>${item.name}</span> x <span>${item.quantity}</span>
-                <span>${item.price}</span>
-            `;
-            miniCart.appendChild(miniCartItemEl);
+            if (data.items && data.items.length > 0) {
+                data.items.forEach(product => {
+                    if (product.type === 'ITEM' && product.item_data) {
+                        const productDiv = document.createElement('div');
+                        productDiv.className = 'swiper-slide';
+                        productDiv.innerHTML = `
+                            <div class="product-item">
+                                <img src="${product.imageUrl || 'default-image-url.jpg'}" alt="${product.item_data.name}" style="width:300px; height:300px;">
+                                <h3>${product.item_data.name}</h3>
+                                <p>$${(product.item_data.variations[0].item_variation_data.price_money.amount / 100).toFixed(2)}</p>
+                            </div>
+                        `;
+                        swiperWrapper.appendChild(productDiv);
+                    }
+                });
+
+                // Re-initialize or update Swiper after adding new slides
+                new Swiper('.products-slider', {
+                    speed: 600,
+                    loop: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false
+                    },
+                    slidesPerView: 'auto',
+                    pagination: {
+                        el: '.swiper-pagination',
+                        type: 'bullets',
+                        clickable: true
+                    }
+                });
+            } else {
+                swiperWrapper.innerHTML = '<p>No featured products available at the moment.</p>';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching featured products:', error);
         });
-    }
 }
 
-
-new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-        clickable: true
-    }
-});
-
-new Swiper('.products-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-        clickable: true
-    }
-});
 // Initialize AOS
 AOS.init({
     duration: 1000,
@@ -167,5 +183,3 @@ function loadComponent(componentPath, placeholderId) {
         })
         .catch(error => console.error(`Failed to load ${componentPath}:`, error));
 }
-
-// function to show image when we click on a image
