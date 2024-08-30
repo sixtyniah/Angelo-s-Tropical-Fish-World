@@ -1,6 +1,8 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    loadComponent('navigation.html', 'navigation-placeholder');
+    loadComponent('footer.html', 'footer-placeholder');
 
     // Add event listener for closing the image
     const closeButton = document.querySelector('.close-button');
@@ -156,5 +158,13 @@ AOS.init({
     mirror: false
 });
 
+function loadComponent(componentPath, placeholderId) {
+    fetch(componentPath)
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById(placeholderId).innerHTML = html;
+        })
+        .catch(error => console.error(`Failed to load ${componentPath}:`, error));
+}
 
 // function to show image when we click on a image
