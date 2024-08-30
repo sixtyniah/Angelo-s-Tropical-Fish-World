@@ -237,10 +237,9 @@ function addToCart(itemName, itemPrice, itemImage) {
 // Function to fetch and display featured products
 // Function to fetch and display featured products
 function fetchFeaturedProducts() {
-    const backendUrl = ''; // Make sure this points to your backend API
-    const featuredCategoryID = 'M7T5QB4HWAR5CLKY7DJSTRFK'; // Replace with the actual category ID for "Featured Items"
-    
-    fetch(`${backendUrl}/api/products?category=${encodeURIComponent(featuredCategoryID)}`)
+    const backendUrl = '/api/products?category=M7T5QB4HWAR5CLKY7DJSTRFK'; // Adjust the category ID for featured items
+
+    fetch(backendUrl)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -248,16 +247,39 @@ function fetchFeaturedProducts() {
             return response.json();
         })
         .then(data => {
+            const swiperWrapper = document.getElementById('swiper-wrapper-featured');
+            swiperWrapper.innerHTML = ''; // Clear any existing content
+
             if (data.items && data.items.length > 0) {
-                displayFeaturedProducts(data.items);
+                data.items.forEach(product => {
+                    if (product.type === 'ITEM' && product.item_data) {
+                        const productId = product.id;
+                        const productDiv = document.createElement('div');
+                        productDiv.className = 'swiper-slide';
+                        productDiv.innerHTML = `
+                            <a href="product.html?id=${productId}" class="featured-product-link">
+                                <div class="product-item">
+                                    <img src="${product.imageUrl || 'default-image-url.jpg'}" alt="${product.item_data.name}" style="width:300px; height:300px;">
+                                    <h3>${product.item_data.name}</h3>
+                                    <p>$${(product.item_data.variations[0].item_variation_data.price_money.amount / 100).toFixed(2)}</p>
+                                </div>
+                            </a>
+                        `;
+                        swiperWrapper.appendChild(productDiv);
+                    }
+                });
+
+                // Re-initialize or update Swiper after adding new slides
+                initializeOrUpdateSwiper();
             } else {
-                console.log("No featured products found for category:", featuredCategoryID);
+                swiperWrapper.innerHTML = '<p>No featured products available at the moment.</p>';
             }
         })
         .catch(error => {
             console.error('Error fetching featured products:', error);
         });
 }
+
 
 // Function to display the fetched products in the Swiper slider
 function displayFeaturedProducts(products) {
@@ -266,6 +288,7 @@ function displayFeaturedProducts(products) {
 
     products.forEach(product => {
         if (product.type === 'ITEM' && product.item_data) {
+            const productId = product.id;
             const productName = product.item_data.name;
             const imageUrl = product.imageUrl || 'default-image-url.jpg'; // Fallback if no image is available
             const productDescription = product.item_data.description || '';
@@ -274,12 +297,14 @@ function displayFeaturedProducts(products) {
             const productDiv = document.createElement('div');
             productDiv.className = 'swiper-slide';
             productDiv.innerHTML = `
-                <div class="product-item">
-                    <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:300px; height:300px;">
-                    <h3>${productName}</h3>
-                    <p>${productDescription}</p>
-                    <p>$${productPrice.toFixed(2)}</p>
-                </div>
+                <a href="product.html?id=${productId}" class="featured-product-link">
+                    <div class="product-item">
+                        <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:300px; height:300px;">
+                        <h3>${productName}</h3>
+                        <p>${productDescription}</p>
+                        <p>$${productPrice.toFixed(2)}</p>
+                    </div>
+                </a>
             `;
 
             swiperWrapper.appendChild(productDiv); // Append each product as a slide
@@ -289,6 +314,8 @@ function displayFeaturedProducts(products) {
     // Re-initialize or update Swiper
     initializeOrUpdateSwiper();
 }
+
+
 
 // Function to initialize or update the Swiper instance
 function initializeOrUpdateSwiper() {
@@ -315,6 +342,7 @@ function initializeOrUpdateSwiper() {
 // Ensure the featured products are fetched when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     fetchFeaturedProducts();
+    displayFeaturedProducts();
 });
 
 

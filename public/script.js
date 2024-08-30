@@ -130,34 +130,24 @@ function fetchFeaturedProducts() {
             if (data.items && data.items.length > 0) {
                 data.items.forEach(product => {
                     if (product.type === 'ITEM' && product.item_data) {
+                        const productId = product.id;
                         const productDiv = document.createElement('div');
                         productDiv.className = 'swiper-slide';
                         productDiv.innerHTML = `
-                            <div class="product-item">
-                                <img src="${product.imageUrl || 'default-image-url.jpg'}" alt="${product.item_data.name}" style="width:300px; height:300px;">
-                                <h3>${product.item_data.name}</h3>
-                                <p>$${(product.item_data.variations[0].item_variation_data.price_money.amount / 100).toFixed(2)}</p>
-                            </div>
+                            <a href="product.html?id=${productId}" class="featured-product-link">
+                                <div class="product-item">
+                                    <img src="${product.imageUrl || 'default-image-url.jpg'}" alt="${product.item_data.name}" style="width:300px; height:300px;">
+                                    <h3>${product.item_data.name}</h3>
+                                    <p>$${(product.item_data.variations[0].item_variation_data.price_money.amount / 100).toFixed(2)}</p>
+                                </div>
+                            </a>
                         `;
                         swiperWrapper.appendChild(productDiv);
                     }
                 });
 
                 // Re-initialize or update Swiper after adding new slides
-                new Swiper('.products-slider', {
-                    speed: 600,
-                    loop: true,
-                    autoplay: {
-                        delay: 3000,
-                        disableOnInteraction: false
-                    },
-                    slidesPerView: 'auto',
-                    pagination: {
-                        el: '.swiper-pagination',
-                        type: 'bullets',
-                        clickable: true
-                    }
-                });
+                initializeOrUpdateSwiper();
             } else {
                 swiperWrapper.innerHTML = '<p>No featured products available at the moment.</p>';
             }
@@ -166,6 +156,7 @@ function fetchFeaturedProducts() {
             console.error('Error fetching featured products:', error);
         });
 }
+
 
 // Initialize AOS
 AOS.init({

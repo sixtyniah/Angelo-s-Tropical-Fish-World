@@ -60,8 +60,49 @@ main {
     transform: scale(1.05); /* Slightly zoom in on the image */
 }
 
+/* Ensures text inside product items are styled as desired */
+.product-item a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit the color from the parent (which is black by default) */
+    display: block; /* Ensures the link covers the entire product item */
+}
+
+.product-item h3 {
+    color: #000; /* Ensure the heading text is black */
+    font-size: 1.2em; /* Adjust as needed */
+}
+
+.product-item p {
+    color: #000; /* Ensure the price text is black */
+    font-size: 1em; /* Adjust as needed */
+    margin-top: auto; /* Pushes the price text to the bottom */
+}
+
+/* Hover effect */
+.product-item:hover {
+    transform: translateY(-10px); /* Move the item up slightly */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Make the shadow more pronounced */
+}
+
+.product-item:hover img {
+    transform: scale(1.05); /* Slightly zoom in on the image */
+}
 
 
+
+.featured-product-link {
+    text-decoration: none;
+    color: inherit; /* Keep the link text color the same as surrounding text */
+}
+
+.featured-product-link:hover .product-item {
+    transform: translateY(-10px); /* Same hover effect as on the shop page */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.featured-product-link:hover img {
+    transform: scale(1.05); /* Slight zoom on the image when hovered */
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -382,6 +423,22 @@ footer {
 .cta-button:hover {
     background: #0056b3; /* Darker blue on hover */
 }
+
+.ctag-button {
+    background: #000000; /* Blue color */
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 25px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.ctag-button:hover {
+    background: #ffffff; /* Darker blue on hover */
+}
+
 
 #header {
     /* Set styles for your header here */
