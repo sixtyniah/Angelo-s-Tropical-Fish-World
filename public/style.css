@@ -914,6 +914,13 @@ button:hover {
     width: 100px; /* Adjust this to the width of a single item */
     margin: auto; /* Center the slider */
 }
+.holiday-notice {
+    color: red;
+    font-weight: bold;
+    font-family: 'Times New Roman', serif;
+    text-align: center;
+    font-size: 20px;
+}
 
 .slider-track {
     display: flex;

@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadComponent('navigation.html', 'navigation-placeholder');
     loadComponent('footer.html', 'footer-placeholder');
+    loadComponent('holiday-notice.html', 'holiday-notice-placeholder');
 
     // Add event listener for closing the image
     const closeButton = document.querySelector('.close-button');
