@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.addEventListener('input', function() {
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(() => {
-                console.log("Search query:", this.value);
                 fetchProducts(categoryFilter ? categoryFilter.value : 'all', this.value);
             }, 300); // Adjust delay as needed
         });
@@ -16,26 +15,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (categoryFilter) {
         categoryFilter.addEventListener('change', function() {
-            console.log("Filter changed to:", this.value); // this.value is now the category ID
             fetchProducts(this.value);
         });
     }
 
-    // Fetch and display products for the first time after DOM is loaded
     fetchProducts('all');
-    fetchFeaturedProducts(); 
-    setInterval(moveSlider, 3000); // Add this line to fetch featured products
-    const subpage = getCurrentSubpage();
-    fetchProducts('all', '', subpage);
+    fetchFeaturedProducts();
+    setInterval(moveSlider, 3000);
 });
 
-// Rest of your code...
+document.addEventListener('DOMContentLoaded', () => {
+    const categoryFilter = document.getElementById('category-filter');
+    const searchInput = document.getElementById('product-search');
+    let debounceTimer;
 
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                fetchProducts(categoryFilter ? categoryFilter.value : 'all', this.value);
+            }, 300);
+        });
+    }
 
-function fetchProducts(categoryName, searchQuery = '') {
-    console.log("Fetching products for category:", categoryName, "with search query:", searchQuery);
-    const backendUrl = '';
-    fetch(`${backendUrl}/api/products?category=${encodeURIComponent(categoryName)}&search=${encodeURIComponent(searchQuery)}`)
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', function() {
+            fetchProducts(this.value);
+        });
+    }
+
+    fetchProducts('all');
+});
+
+function fetchProducts(categoryName = 'all', searchQuery = '', page = 1, limit = 20) {
+    const backendUrl = 'http://localhost:3000';
+    const queryParams = new URLSearchParams({
+        category: categoryName,
+        search: searchQuery,
+        page: page,
+        limit: limit
+    });
+
+    // Show a loading indicator while fetching
+    document.getElementById('all-product-grid').innerHTML = '<p>Loading...</p>';
+
+    fetch(`${backendUrl}/api/products?${queryParams.toString()}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -43,41 +67,117 @@ function fetchProducts(categoryName, searchQuery = '') {
             return response.json();
         })
         .then(data => {
-            console.log("Received data:", data);
             displayProducts(data.items);
+            setupPagination(data.totalPages, data.currentPage, categoryName, searchQuery);
         })
         .catch(error => {
             console.error('Error fetching products:', error);
+            document.getElementById('all-product-grid').innerHTML = '<p>Failed to load products. Please try again later.</p>';
         });
 }
 
-
-function displayProducts(products, searchQuery) {
+function displayProducts(products) {
     const productGrid = document.getElementById('all-product-grid');
     productGrid.innerHTML = ''; // Clear any existing content
 
     products.forEach(product => {
         if (product.type === 'ITEM' && product.item_data) {
+            const productId = product.id;
             const productName = product.item_data.name;
-            const imageUrl = product.imageUrl || 'default-image-url.jpg'; // Default image URL
-            const productDescription = product.item_data.description || '';
-            const productPrice = product.item_data.variations[0].item_variation_data.price_money.amount / 100; // Assuming price is in the first variation and in cents
+            const imageUrl = product.imageUrl || 'default-image-url.jpg';
+            const productPrice = product.item_data.variations[0].item_variation_data.price_money.amount / 100;
 
-            // Create product elements
             const productDiv = document.createElement('div');
             productDiv.className = 'product-item';
             productDiv.innerHTML = `
-                <img src="${imageUrl}" alt="${productName}" loading="lazy" style="width:300px; height:300px;">
-                <h3>${productName}</h3>
-                <p>${productDescription}</p>
+                <a href="product.html?id=${productId}">
+                    <img data-src="${imageUrl}" alt="${productName}" class="lazy" loading="lazy" style="width:300px; height:300px;">
+                    <h3>${productName}</h3>
+                </a>
                 <p>$${productPrice.toFixed(2)}</p>
             `;
 
-            productGrid.appendChild(productDiv); // Append to product grid
+            productGrid.appendChild(productDiv);
         }
     });
-    updateProductGridLayout(); // Update the grid layout
+
+    lazyLoadImages(); // Call lazy loading function
 }
+
+
+function lazyLoadImages() {
+    const lazyImages = document.querySelectorAll('img.lazy');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+
+function setupPagination(totalPages, currentPage, categoryName, searchQuery) {
+    const paginationContainer = document.getElementById('pagination-container');
+    const pageIndicator = document.getElementById('page-indicator');
+    const prevButton = document.getElementById('prev-page');
+    const nextButton = document.getElementById('next-page');
+    const jumpInput = document.getElementById('jump-to-page');
+    const jumpButton = document.getElementById('jump-button');
+
+    pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
+
+    prevButton.disabled = currentPage === 1;
+    nextButton.disabled = currentPage === totalPages;
+
+    jumpInput.value = currentPage;
+    jumpInput.max = totalPages;
+
+    prevButton.onclick = () => {
+        if (currentPage > 1) {
+            fetchProducts(categoryName, searchQuery, currentPage - 1);
+        }
+    };
+
+    nextButton.onclick = () => {
+        if (currentPage < totalPages) {
+            fetchProducts(categoryName, searchQuery, currentPage + 1);
+        }
+    };
+
+    jumpButton.onclick = () => {
+        const page = parseInt(jumpInput.value);
+        if (page >= 1 && page <= totalPages) {
+            fetchProducts(categoryName, searchQuery, page);
+        } else {
+            alert(`Please enter a valid page number between 1 and ${totalPages}`);
+        }
+    };
+}
+
+
+
+function updateProductGridLayout() {
+    const productGrid = document.getElementById('all-product-grid');
+    if (!productGrid) return;
+
+    const productItems = productGrid.getElementsByClassName('product-item');
+    const columnCount = 4;
+
+    for (let i = 0; i < productItems.length; i++) {
+        productItems[i].style.width = 100 + '%';
+    }
+}
+
+// The other functions, such as fetchFeaturedProducts and moveSlider, remain unchanged.
+
 
 function displayFilteredProducts(products, searchQuery) {
     const filteredProductGrid = document.getElementById('filtered-products');
@@ -107,10 +207,6 @@ function displayFilteredProducts(products, searchQuery) {
     updateProductGridLayout();
 }
 
-function updateProductGridLayout() {
-    updateGridLayout('all-product-grid');
-    updateGridLayout('filtered-products');
-}
 
 function updateGridLayout(gridId) {
     const productGrid = document.getElementById(gridId);

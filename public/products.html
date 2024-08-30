@@ -58,6 +58,24 @@
         <!-- Filtered product items will be displayed here -->
     </div>
 
+    <!-- Pagination -->
+    <div id="pagination-container" class="pagination">
+        <!-- Previous button -->
+        <button id="prev-page" disabled>← Previous</button>
+    
+        <!-- Page indicator -->
+        <span id="page-indicator">Page 1 of 1</span>
+    
+        <!-- Next button -->
+        <button id="next-page">Next →</button>
+    
+        <!-- Jump to page input -->
+        <label for="jump-to-page">Jump to page:</label>
+        <input type="number" id="jump-to-page" min="1" value="1">
+        <button id="jump-button">Go</button>
+    </div>
+    
+
 </main>
 <div id="footer-placeholder"></div>
 <script src="script.js"></script> <!-- Link to the JavaScript file -->
